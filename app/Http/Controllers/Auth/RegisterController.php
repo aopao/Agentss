@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BaseController;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -11,7 +11,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
  * Class RegisterController
  * @package App\Http\Controllers\Auth
  */
-class RegisterController extends Controller
+class RegisterController extends BaseController
 {
 	/*
 	|--------------------------------------------------------------------------

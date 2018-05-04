@@ -11,17 +11,9 @@
 |
 */
 
-use App\Models\User;
-
-Route::get('/' , function() {
-//	return view('welcome');
-	$user = new User;
-	echo $user->show_url;
-	echo $user->edit_url;
-	return User::all();
-});
+Route::get('/' , 'IndexController@index');
 
 ##代理商管理路由##
 include_once __DIR__ . '/agent.php';
-##后台管理路由##
+##管理员管理路由##
 include_once __DIR__ . '/admin.php';

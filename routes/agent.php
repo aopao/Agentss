@@ -7,6 +7,9 @@
 /**
  * 登录路由
  */
-##系统登录路由##
+##代理商登录路由##
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::namespace('Agent')->prefix('agent')->middleware('auth')->group(function() {
+	Route::get('/' , 'IndexController@index')->name('agent.index');
+});
