@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Instance</title>
+    <!-- 开发环境版本，包含了用帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{ a }}</p>
+</div>
+</body>
+<script>
+    // var tops = { names: 1 };
+    // Object.freeze(tops);
+    // vm = new Vue({
+    //     data: tops
+    // });
+    // tops.names=32323;
+    // alert(vm.names)
+
+    var data = {a: 23};
+    var vm = new Vue({
+        el: "#app",
+        data: data,
+        created:function(){
+            alert('a 创建了')
+        }
+    })
+    // alert(vm.$data === data)
+</script>
+</html>

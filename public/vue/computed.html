@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Computed</title>
+    <!-- 开发环境版本，包含了用帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>Origin:{{ message }}</p>
+    <p>handle:{{ reverseMessage }}</p>
+    <p>{{ fullName}}</p>
+
+</div>
+</body>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: '我是测试',
+            firstName: 'wu',
+            lastName: 'jinyu',
+        },
+        computed: {
+            reverseMessage: function () {
+                return this.message.split('').reverse().join('')
+            },
+            fullName: {
+                get: function () {
+                    return this.firstName + ' ' + this.lastName
+                },
+                set:function (newValue) {
+                    var names = newValue.split(' ');
+                    this.firstName = names[0];
+                    this.lastName = names[names.length - 1];
+                }
+            }
+
+
+        }
+    })
+</script>
+</html>

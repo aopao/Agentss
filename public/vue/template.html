@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+    <!-- 开发环境版本，包含了用帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p v-once>{{ message }}</p>
+    <p>{{ html }}</p>
+    <p v-html="html"></p>
+    <p>{{ number + 1 }}</p>
+    <a :href="ahref">sdsf</a>
+    <div v-bind:id="dynamicId"></div>
+    <button v-bind:disabled="isButtonDisabled">Button</button>
+    <button v-if="is_show">是否显示</button>
+</div>
+</body>
+<script>
+    app = new Vue({
+        el: "#app",
+        data: {
+            ahref:'sdfsdfsdfsdf',
+            number:10,
+            message: '我的测试',
+            html: '<h1>我的HTML</h1>',
+            dynamicId:2323243,
+            isButtonDisabled:null,
+            is_show:true
+        }
+    })
+</script>
+</html>

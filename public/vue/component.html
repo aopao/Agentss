@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Component</title>
+    <!-- 开发环境版本，包含了用帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <todo-list v-for="todo in lists" v-bind:todo="todo">
+    </todo-list>
+</div>
+</body>
+<script>
+    Vue.component('todo-list', {
+        props: ['todo'],
+        template: '<li>{{ todo.text }}</li>'
+    });
+    app = new Vue({
+        el:"#app",
+        data:{
+            lists:[
+                {id:1,text:'3232434234'},
+                {id:2,text:'sdsdfsdf'},
+                {id:3,text:'34dfgg343'}
+            ]
+        }
+    })
+</script>
+</html>

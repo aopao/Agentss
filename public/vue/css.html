@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Css</title>
+    <!-- 开发环境版本，包含了用帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div v-bind:class="{ active: isActive }">sdfsdf</div>
+    <ul>
+        <todo-list v-for="todo in lists" v-bind:todo="todo" v-bind:class="{aaa:isActive}"></todo-list>
+    </ul>
+    <div v-bind:style="[styleObject,baseStyles]"></div>
+</div>
+</body>
+<script>
+    Vue.component('todo-list', {
+        props: ['todo'],
+        template: '<li class="foo bar">{{ todo.text }}</li>'
+    });
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            isActive: true,
+            lists: [
+                {id: 1, text: 'sdsdfsdfsfsd'},
+                {id: 2, text: 'sdsdfsdfsfsd'},
+                {id: 3, text: 'sdsdfsdfsfsd'},
+                {id: 4, text: 'sdsdfsdfsfsd'}
+            ],
+            styleObject: {
+                color: 'red',
+                fontSize: '13px'
+            },
+            baseStyles: {
+                float: 'none'
+            }
+        }
+    })
+</script>
+</html>

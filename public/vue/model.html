@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Model</title>
+    <!-- 开发环境版本，包含了用帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <span>{{ message }}</span>
+    <input type="text" v-model="message">
+</div>
+</body>
+<script>
+    app = new Vue({
+        el:"#app",
+        data:{
+            message:'Hello Vue!'
+        }
+    })
+</script>
+</html>
