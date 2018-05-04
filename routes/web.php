@@ -13,6 +13,9 @@
 
 Route::get('/' , 'IndexController@index');
 
+#前后端用户判断跳转路径
+Route::get('/redirect' , 'Auth\RedirectController@index');
+
 ##代理商管理路由##
 include_once __DIR__ . '/agent.php';
 ##管理员管理路由##

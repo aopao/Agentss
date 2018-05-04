@@ -11,5 +11,5 @@
 Auth::routes();
 
 Route::namespace('Agent')->prefix('agent')->middleware('auth')->group(function() {
-	Route::get('/' , 'IndexController@index')->name('agent.index');
+	Route::get('/' , 'DashboardController@index')->name('agent.index');
 });

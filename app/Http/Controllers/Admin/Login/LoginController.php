@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin\Login;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -30,7 +31,7 @@ class LoginController extends BaseController
 	 *
 	 * @var string
 	 */
-	protected $redirectTo = '/agent';
+	protected $redirectTo = '/dashboard';
 
 	/**
 	 * Create a new controller instance.
@@ -39,9 +40,15 @@ class LoginController extends BaseController
 	 */
 	public function __construct()
 	{
-		parent::__construct();
 		$this->middleware('guest')->except('logout');
+		$this->redirectTo = config('admin.prefix') . '/dashboard';
 	}
+
+	public function showLoginForm()
+	{
+		return view('admin.login.show');
+	}
+
 
 
 	/**
@@ -58,12 +65,16 @@ class LoginController extends BaseController
 		// the IP address of the client making these requests into this application.
 		if ($this->hasTooManyLoginAttempts($request)) {
 			$this->fireLockoutEvent($request);
-
 			return $this->sendLockoutResponse($request);
 		}
 
 		if ($this->attemptLogin($request)) {
-			return $this->sendLoginResponse($request);
+			if (!Auth::check() || Auth::user()->is_manage != 1) {
+				Auth::logout();
+				abort(404);
+			}else{
+				return $this->sendLoginResponse($request);
+			}
 		}
 
 		// If the login attempt was unsuccessful we will increment the number of attempts

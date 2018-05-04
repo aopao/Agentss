@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{ asset('v1/vendor/intro-js/introjs.css') }}">
     <link rel="stylesheet" href="{{ asset('v1/vendor/slidepanel/slidePanel.css') }}">
     <link rel="stylesheet" href="{{ asset('v1/vendor/flag-icon-css/flag-icon.css') }}">
-    <link rel="stylesheet" href="{{ asset('v1/css/login.min.css') }}">
+    @yield('css')
 
     <!-- Fonts -->
     <link rel="stylesheet" href="{{ asset('v1/fonts/web-icons/web-icons.min.css') }}">

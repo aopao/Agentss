@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Agent;
 
 use Illuminate\Http\Request;
 
-class IndexController extends BaseController
+class DashboardController extends BaseController
 {
 
 	/**
@@ -14,6 +14,6 @@ class IndexController extends BaseController
 	 */
 	public function index()
 	{
-		return view('home');
+		return view('agent.dashboard.index');
 	}
 }
