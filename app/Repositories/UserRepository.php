@@ -8,52 +8,52 @@
 
 namespace App\Repositories;
 
-use App\Models\Student;
+use App\Models\User;
 
 /**
- * Class StudentRepository
+ * Class UserRepository
  * @package App\Repositories
  */
-class StudentRepository
+class UserRepository
 {
 	/**
 	 * @var student
 	 */
-	private $student;
+	private $user;
 
 	/**
 	 * StudentRepository constructor.
-	 * @param $student $student
+	 * @param $user $user
 	 */
-	public function __construct(Student $student)
+	public function __construct(User $user)
 	{
-		$this->student = $student;
+		$this->user = $user;
 	}
 
 	/**
 	 */
 	public function getAll()
 	{
-		return $this->student->paginate(config('admin.page'));
+		return $this->user->paginate(config('admin.page'));
 	}
 
 	public function getAllByQuery($key)
 	{
 		$keyword = '%' . $key . '%';
-		return $this->student->orwhere('name' , 'like' , $keyword)
+		return $this->user->orwhere('name' , 'like' , $keyword)
 			->orWhere('mobile' , 'like' , $keyword)
 			->orWhere('card' , 'like' , $keyword)
-			->with([ 'province' , 'user' ])->paginate(config('admin.page'));
+			->paginate(config('admin.page'));
 	}
 
 	public function getById($id)
 	{
-		return $this->student->with([ 'province' , 'user' ])->find($id);
+		return $this->user->find($id);
 	}
 
 	public function store(array $array)
 	{
-		return $this->student->create($array)->save();
+		return $this->user->create($array)->save();
 	}
 
 }

@@ -95,3 +95,10 @@
     padding-right: 20px;
     margin-bottom: 5px;
 }
+.text-decoration{
+    text-decoration: none;
+}
+
+.info_border{
+    border-bottom: 1px solid #e4eaec;
+}

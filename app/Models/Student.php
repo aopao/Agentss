@@ -14,4 +14,9 @@ class Student extends Model
 	{
 		return $this->belongsTo(Province::class);
     }
+
+	public function user()
+	{
+		return $this->belongsTo(User::class);
+	}
 }

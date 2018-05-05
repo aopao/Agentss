@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * 管理员后台变量
  * User: jason
  * Date: 2018/4/27
  * Time: 下午1:48

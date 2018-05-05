@@ -32,6 +32,8 @@ class StudentController extends BaseController
 	public function show($id)
 	{
 		$info = $this->student->getById($id);
+		if (!isset($info))
+			abort(404);
 		return view('admin.student.show' , compact('info'));
 	}
 

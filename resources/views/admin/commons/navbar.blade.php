@@ -30,7 +30,10 @@
                 </li>
 
                 <li class="nav-item dropdown dropdown-fw dropdown-mega">
-                    <a class="nav-link" href="www" aria-expanded="false" data-animation="fade" role="button">学生管理</a>
+                    <a class="nav-link" href="{{ route('admin.student.index') }}" aria-expanded="false" data-animation="fade" role="button">学生管理</a>
+                </li>
+                <li class="nav-item dropdown dropdown-fw dropdown-mega">
+                    <a class="nav-link" href="{{ route('user.index') }}" aria-expanded="false" data-animation="fade" role="button">代理商管理</a>
                 </li>
                 <li class="nav-item dropdown dropdown-fw dropdown-mega">
                     <a class="nav-link" href="www" aria-expanded="false" data-animation="fade" role="button">数据查询</a>

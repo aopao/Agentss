@@ -30,7 +30,7 @@
                 </li>
 
                 <li class="nav-item dropdown dropdown-fw dropdown-mega">
-                    <a class="nav-link" href="www" aria-expanded="false" data-animation="fade" role="button">学生管理</a>
+                    <a class="nav-link" href="{{ route('student.index') }}" aria-expanded="false" data-animation="fade" role="button">学生管理</a>
                 </li>
                 <li class="nav-item dropdown dropdown-fw dropdown-mega">
                     <a class="nav-link" href="www" aria-expanded="false" data-animation="fade" role="button">数据查询</a>
@@ -64,6 +64,5 @@
             </div>
         </div>
         <!-- End Navbar Collapse -->
-
     </div>
 </nav>
