@@ -17,10 +17,16 @@
 
     <!-- Plugins -->
     <link rel="stylesheet" href="{{ asset('v1/vendor/animsition/animsition.css') }}">
+{{--    <link rel="stylesheet" href="{{ asset('v1/vendor/asscrollable/asScrollable.css') }}">--}}
+{{--    <link rel="stylesheet" href="{{ asset('v1/vendor/switchery/switchery.css') }}">--}}
+{{--    <link rel="stylesheet" href="{{ asset('v1/vendor/intro-js/introjs.css') }}">--}}
+{{--    <link rel="stylesheet" href="{{ asset('v1/vendor/slidepanel/slidePanel.css') }}">--}}
+{{--    <link rel="stylesheet" href="{{ asset('v1/vendor/flag-icon-css/flag-icon.css') }}">--}}
     @yield('css')
 
     <!-- Fonts -->
     <link rel="stylesheet" href="{{ asset('v1/fonts/web-icons/web-icons.min.css') }}">
+{{--    <link rel="stylesheet" href="{{ asset('v1/fonts/brand-icons/brand-icons.min.css') }}">--}}
 
     <!--[if lt IE 9]>
 
@@ -32,4 +38,9 @@
     <script src="{{ asset('v1/vendor/respond/respond.min.js') }}"></script>
     <![endif]-->
 
+    <!-- Scripts -->
+{{--    <script src="{{ asset('v1/vendor/breakpoints/breakpoints.js') }}"></script>--}}
+    <script>
+        Breakpoints();
+    </script>
 </head>

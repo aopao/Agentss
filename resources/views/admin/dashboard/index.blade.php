@@ -1,11 +1,11 @@
-@extends('layouts.dashboard_layout')
+@extends('admin.layouts.dashboard')
 @section('css')
     <link rel="stylesheet" href="{{ asset('v1/css/dashboard.min.css') }}">
 @endsection
 @section('content')
     <div class="page-header h-300 mb-30">
         <div class="text-center blue-grey-800 m-0 mt-50">
-            <div class="font-size-50 mb-30 blue-grey-800">{{ Auth::user()->username }}</div>
+            <div class="font-size-50 mb-30 blue-grey-800">{{ Auth::user()->nickname }}</div>
             <ul class="list-inline font-size-14">
                 <li class="list-inline-item">
                     <i class="icon wb-cloud mr-5" aria-hidden="true"></i>黑马高考规划师

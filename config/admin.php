@@ -7,5 +7,6 @@
  */
 
 return [
+	'page' => 30 ,
 	'prefix' => env('ADMIN_PREFIX' , 'admin')
 ];

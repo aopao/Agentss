@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('css')
-<link rel="stylesheet" href="{{ asset('v1/css/login.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('v1/css/login.min.css') }}">
 @endsection
 @section('content')
     <body class="animsition page-login-v2 layout-full page-dark" style="background: transparent;">
@@ -42,9 +42,7 @@
                     {{ csrf_field() }}
                     <button type="submit" class="btn btn-primary btn-block">@lang('form.submit')</button>
                 </form>
-
                 <p>@lang('form.guest')? <a href="register-v2.html">@lang('form.register_user')</a></p>
-
                 <footer class="page-copyright">
                     <p>{{ $setting['web_name'] }}</p>
                     <p>{{ $setting['copyright'] }}</p>
