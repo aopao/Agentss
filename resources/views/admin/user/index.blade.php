@@ -1,6 +1,7 @@
 @extends('admin.layouts.layout')
 @section('css')
-    <link rel="stylesheet" href="{{ asset('v1/css/user.css') }}">
+    <link rel="stylesheet" href="{{ asset('v1/css/student.css') }}">
+    <link rel="stylesheet" href="{{ asset('v1//vendor/webui-popover/webui-popover.css') }}">
 @endsection
 @section('content')
     <div class="page-header">
@@ -28,9 +29,9 @@
             </div>
         </div>
         <div class="panel-body pt-0">
-            <!-- Example Table Selectable -->
-            <div class="example mt--1">
-                <form action="">
+            <form action="">
+                <!-- Example Table Selectable -->
+                <div class="example mt--1">
                     <table class="table table-hover table-bordered table-striped">
                         <thead>
                         <tr align="center">
@@ -44,7 +45,6 @@
                             <th>@lang('user.username')</th>
                             <th>@lang('user.phone')</th>
                             <th>@lang('user.nickname')</th>
-                            <th class="hidden-sm-down">@lang('user.email')</th>
                             <th>@lang('user.province')</th>
                             <th class="hidden-sm-down">@lang('form.created_at')</th>
                             <th class="hidden-sm-down">@lang('form.status')</th>
@@ -63,11 +63,26 @@
                                 <td>{{ $user['id'] }}</td>
                                 <td>{{ $user['username'] }}</td>
                                 <td>{{ $user['phone'] }}</td>
-                                <td>{{ $user['province'] }}</td>
                                 <td>{{ $user['nickname'] }}</td>
-                                <td class="hidden-sm-down">{{ $user['email'] }}</td>
-                                <td>{{ $user['province_id'] }}</td>
+                                <td class="hidden-sm-down">{{ $user['id'] }}山东省,淄博市,黑龙江省</td>
                                 <td class="hidden-sm-down">{{ $user['created_at']  }}</td>
+                                <td>
+                                    <!-- Pop with List -->
+                                    <button class="btn btn-primary btn-xs list" type="button">list</button>
+                                    <div class="list_content" hidden>
+                                        <ul class="list-group list-group-bordered">
+                                            <li class="list-group-item">Cras justo odio</li>
+                                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                                            <li class="list-group-item">Morbi leo risus</li>
+                                            <li class="list-group-item">Porta ac consectetur ac</li>
+                                            <li class="list-group-item">Vestibulum at eros</li>
+                                        </ul>
+                                    </div>
+                                    <!-- End Pop with List -->
+                                </td>
+                                <td>@if( $user['status']== 1)
+                                        <button class="btn btn-xs btn-success" type="button" id="btn-{{$user['id']}}" onclick="changeStatus({{$user['id']}})">正常</button> @else
+                                        <button class="btn btn-xs btn-danger" type="button" id="btn-{{$user['id']}}" onclick="changeStatus({{$user['id']}})">禁封</button> @endif</td>
                                 <td>
                                     <a href="{{route('user.show',['id'=>$user['id']])}}" class="btn btn-outline btn-success btn-xs"><i class="icon wb-eye" aria-hidden="true"></i></a>
                                     <a href="{{route('user.edit',['id'=>$user['id']])}}" class="btn btn-outline btn-primary btn-xs"><i class="icon wb-pencil" aria-hidden="true"></i></a>
@@ -77,30 +92,30 @@
                         @endforeach
                         </tbody>
                     </table>
-                </form>
-            </div>
-            <div class="card-block p-0">
-                <div class="project-controls clearfix" style="border: none">
-                    <div class="float-left">
-                        <a href="{{ route('user.create') }}" class="btn btn-outline btn-info">@lang('user.change_agent')</a>
-                    </div>
-                    <div class="float-right">
-                        <nav>
-                            @if(isset($key))
-                                {!! $users->appends(['key'=>$key])->render() !!}
-                            @else
-                                {{ $users->links() }}
-                            @endif
-                        </nav>
+                </div>
+                <div class="card-block p-0">
+                    <div class="project-controls clearfix" style="border: none">
+                        <div class="float-left">
+                            <a href="{{ route('user.create') }}" class="btn btn-outline btn-info">@lang('user.change_agent')</a>
+                        </div>
+                        <div class="float-right">
+                            <nav>
+                                @if(isset($key))
+                                    {!! $users->appends(['key'=>$key])->render() !!}
+                                @else
+                                    {{ $users->links() }}
+                                @endif
+                            </nav>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- End Example Table Selectable -->
+                <!-- End Example Table Selectable -->
+            </form>
         </div>
     </div>
-
 @endsection
 @section('js')
+    <script src="{{ asset('v1/vendor/webui-popover/jquery.webui-popover.min.js') }}"></script>
     <script>
         $(".selectable-all").on("change", function () {
             if ($(".selectable-all").is(':checked')) {
@@ -109,6 +124,13 @@
                 $('.selectable-item').attr("checked", false);
             }
         });
+
+        function changeStatus(id) {
+            $.get("{{route('admin.user.change_status')}}", {id: id},
+                function (data) {
+                    $(this).val('sdsfsd')
+                });
+        }
     </script>
 @endsection
 

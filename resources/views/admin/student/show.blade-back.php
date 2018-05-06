@@ -8,16 +8,54 @@
     {{--</div>--}}
     <div class="page-content container-fluid">
         <div class="page-header">
-            <h1 class="page-title"><i class="icon wb-user" aria-hidden="true"></i>{{ $info['name'] }}@lang('student.profie_info')</h1>
+            <h1 class="page-title"><i class="icon wb-user" aria-hidden="true"></i>学生管理</h1>
         </div>
         <div class="row">
+            <div class="col-lg-3">
+                <!-- Page Widget -->
+                <div class="card card-shadow text-center">
+                    <div class="card-block">
+                        <a class="avatar avatar-lg" href="javascript:void(0)">
+                            <img src="{{ asset('v1/images/1.jpg') }}" alt="...">
+                        </a>
+                        <h4 class="profile-user">{{ $info['name'] }}</h4>
+                        <p>
+                            <span><i class="icon wb-map"></i> {{ $info['province']['name'] or '未知' }}</span>
+                            <span class="ml-3"><i class="icon wb-emoticon"></i> @if($info['sex'] == 0) 女 @else 男 @endif</span>
+                            <span class="ml-3"><i class="icon wb-dashboard"></i> {{ $info['nation'] or '未知' }}</span>
+                        </p>
+                        <p class="profile-job">
+                            <span><i class="icon wb-user"></i> {{ $info['contact'] or '暂时没有联系人' }}</span>
+                            <span><i class="icon wb-mobile"></i> {{ $info['mobile'] or '暂时没有联系方式' }}</span>
+                        </p>
+                        {{--<button type="button" class="btn btn-primary">新建方案</button>--}}
+                    </div>
+                    <div class="card-footer">
+                        <div class="row no-space">
+                            <div class="col-4">
+                                <strong class="profile-stat-count">323</strong>
+                                <span>@lang('student.simulate_plan')</span>
+                            </div>
+                            <div class="col-4">
+                                <strong class="profile-stat-count">232</strong>
+                                <span>@lang('student.forecast_plan')</span>
+                            </div>
+                            <div class="col-4">
+                                <strong class="profile-stat-count">454</strong>
+                                <span>@lang('student.know_plan')</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Page Widget -->
+            </div>
             <div class="col-lg-12">
                 <!-- Panel -->
                 <div class="panel">
                     <div class="panel-body nav-tabs-animate nav-tabs-horizontal" data-plugin="tabs">
                         <ul class="nav nav-tabs nav-tabs-line" role="tablist">
                             <li class="nav-item" role="presentation"><a class="nav-link active" data-toggle="tab" href="#info" aria-controls="info" role="tab">@lang('student.student_info')</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#simulatePlan" aria-controls="simulatePlan" role="tab">@lang('student.simulate_plan')<span class="badge badge-pill badge-success ml-1">5</span></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#simulatePlan" aria-controls="simulatePlan" role="tab">@lang('student.simulate_plan')</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#forecastPlan" aria-controls="forecastPlan" role="tab">@lang('student.forecast_plan')</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#knowPlan" aria-controls="knowPlan" role="tab">@lang('student.know_plan')</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#collegePlan" aria-controls="collegePlan" role="tab">@lang('student.college_plan')</a></li>

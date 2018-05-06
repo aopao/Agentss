@@ -30,6 +30,7 @@ Route::namespace('Admin')->prefix(PREFIX)->middleware('auth')->group(function() 
 	] ]);
 
 	## 用户管理路由##
+	Route::get('change_status' , 'UserController@changeStatus')->name('admin.user.change_status');
 	Route::resource('user' , 'UserController');
 
 	##地区三级联动##

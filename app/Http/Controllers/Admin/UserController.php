@@ -25,4 +25,10 @@ class UserController extends BaseController
 		}
 		return view('admin.user.index' , compact('users' , 'key'));
 	}
+
+	public function changeStatus(Request $request)
+	{
+		$id = $request->id;
+		return $id;
+	}
 }

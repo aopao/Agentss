@@ -4,9 +4,9 @@
     <script src="{{ asset('v1/vendor/popper-js/umd/popper.min.js')}}"></script>
     <script src="{{ asset('v1/vendor/bootstrap/bootstrap.js')}}"></script>
     <script src="{{ asset('v1/vendor/animsition/animsition.js')}}"></script>
-    <script src="{{ asset('v1/vendor/mousewheel/jquery.mousewheel.js')}}"></script>
-    <script src="{{ asset('v1/vendor/asscrollbar/jquery-asScrollbar.js')}}"></script>
-    <script src="{{ asset('v1/vendor/asscrollable/jquery-asScrollable.js')}}"></script>
+<!--    <script src="{{ asset('v1/vendor/mousewheel/jquery.mousewheel.js')}}"></script>-->
+<!--    <script src="{{ asset('v1/vendor/asscrollbar/jquery-asScrollbar.js')}}"></script>-->
+<!--    <script src="{{ asset('v1/vendor/asscrollable/jquery-asScrollable.js')}}"></script>-->
 
     <!-- Plugins -->
     <script src="{{ asset('v1/vendor/switchery/switchery.js')}}"></script>

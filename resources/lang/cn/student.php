@@ -10,6 +10,7 @@ return [
 	'create_student' => '添加学生' ,
 	'list_student' => '学生列表' ,
 	'manage_student' => '学生管理' ,
+	'profie_info'=>'个人信息详情',
 	'back_student_list' => '返回学生管理' ,
 	'student_basic_info' => '学生基本信息' ,
 	'student_score_info' => '学生预估成绩信息' ,
