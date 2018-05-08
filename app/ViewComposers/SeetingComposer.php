@@ -37,26 +37,24 @@ class SeetingComposer
 	 */
 	public function compose(View $view)
 	{
-		$data = $this->setting->getAll()->toArray();
-		$view->with('setting' , $this->changeToArray($data));
+		$view->with('setting' , $this->changeToArray());
 	}
 
 	/**
-	 * @param array $array
 	 * @return array|mixed
 	 */
-	public function changeToArray(array $array)
+	public function changeToArray()
 	{
 		if (Cache::get('setting')) {
 			return Cache::get('setting');
 		} else {
+			$data = $this->setting->getAll()->toArray();
 			$info = [];
-			foreach ($array as $value) {
+			foreach ($data as $value) {
 				$info[ $value[ 'key' ] ] = $value[ 'value' ];
 			}
-			Cache::put('setting' , $info);
+			Cache::forever('setting' , $info);
 			return $info;
 		}
-
 	}
 }

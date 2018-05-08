@@ -18,6 +18,7 @@ return [
 	'register_user' => '注册用户' ,
 	'guest' => '没有用户名?' ,
 	'create' => '提交' ,
+	'edit'=>'修改',
 	'yes' => '是' ,
 	'no' => '否' ,
 	'id' => '序号' ,
@@ -25,6 +26,9 @@ return [
 	'search' => '搜索' ,
 	'action' => '操作' ,
 	'created_at' => '创建时间' ,
-	'status' => '状态'
+	'status' => '状态',
+	'delete'=>'批量删除',
+	'nodata'=>'没有数据',
+	'search_college'=>'搜搜符合条件的院校专业'
 ];
 

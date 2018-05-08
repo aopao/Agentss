@@ -16,7 +16,6 @@
             </ul>
         </div>
     </div>
-
     <div class="page-content container-fluid">
         <div class="row" data-plugin="matchHeight" data-by-row="true">
             <div class="col-xxl-3 col-xl-4">
@@ -153,7 +152,6 @@
                 </div>
             </div>
         </div>
-
         <div class="row" data-plugin="matchHeight" data-by-row="true">
             <div class="col-xl-4 col-lg-6">
                 <!-- Panel Followers -->

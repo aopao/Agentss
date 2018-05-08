@@ -5,8 +5,13 @@ namespace App\Http\Controllers\Admin;
 use Auth;
 use App\Http\Controllers\Controller;
 
+/**
+ * Class BaseController
+ * @package App\Http\Controllers\Admin
+ */
 class BaseController extends Controller
 {
+
 	/**
 	 * BaseController constructor.
 	 */

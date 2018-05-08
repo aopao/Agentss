@@ -3,12 +3,14 @@
     <link rel="stylesheet" href="{{ asset('v1/css/profile.css') }}">
 @endsection
 @section('content')
-    {{--<div class="page-header">--}}
-    {{--<h1 class="page-title"><i class="icon wb-user" aria-hidden="true"></i>@lang('student.manage_student')</h1>--}}
-    {{--</div>--}}
     <div class="page-content container-fluid">
         <div class="page-header">
             <h1 class="page-title"><i class="icon wb-user" aria-hidden="true"></i>{{ $info['name'] }}@lang('student.profie_info')</h1>
+            <div class="page-header-actions">
+                <a href="{{ route('admin.student.index') }}" class="btn btn-sm btn-icon btn-primary btn-outline btn-round" title="@lang('type.back_type_list')">
+                    <i class="icon wb-reply" aria-hidden="true"></i>
+                </a>
+            </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
@@ -16,18 +18,23 @@
                 <div class="panel">
                     <div class="panel-body nav-tabs-animate nav-tabs-horizontal" data-plugin="tabs">
                         <ul class="nav nav-tabs nav-tabs-line" role="tablist">
-                            <li class="nav-item" role="presentation"><a class="nav-link active" data-toggle="tab" href="#info" aria-controls="info" role="tab">@lang('student.student_info')</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#simulatePlan" aria-controls="simulatePlan" role="tab">@lang('student.simulate_plan')<span class="badge badge-pill badge-success ml-1">5</span></a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#forecastPlan" aria-controls="forecastPlan" role="tab">@lang('student.forecast_plan')</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#knowPlan" aria-controls="knowPlan" role="tab">@lang('student.know_plan')</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#collegePlan" aria-controls="collegePlan" role="tab">@lang('student.college_plan')</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#majorPlan" aria-controls="majorPlan" role="tab">@lang('student.major_plan')</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link active">@lang('student.student_info')</a></li>
+                            @if(isset($list))
+                                @foreach($list as $name=>$id)
+                                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('admin.plane.index',['id'=>$info['id'],'plane_id'=>$id]) }}" aria-controls="info" role="tab">{{ $name }}</a></li>
+                                @endforeach
+                            @endif
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active animation-slide-left" id="info" role="tabpanel">
                                 <div class="panel">
                                     <header class="panel-heading">
-                                        <h3 class="panel-title pl-0 pb-0">@lang('student.planner')</h3>
+                                        <h3 class="panel-title pl-0 pb-0">
+                                            @lang('student.planner')
+                                            <a class="ml-10" href="{{ route('admin.student.index') }}" style="color: #3e8ef7" title="@lang('form.edit')">
+                                                <i class="icon wb-edit" aria-hidden="true"></i>
+                                            </a>
+                                        </h3>
                                     </header>
                                     <div class="panel-body container-fluid pl-0 pb-0">
                                         <div class="row">
@@ -379,26 +386,71 @@
                                 </div>
                             </div>
                             <div class="tab-pane animation-slide-left" id="simulatePlan" role="tabpanel">
-                                <ul class="list-group">
-                                    <li class="list-group-item">
-                                        <div class="media">
-                                            <div class="pr-20">
-                                                <a class="avatar" href="javascript:void(0)">
-                                                    <img class="img-fluid" src="{{ asset('v1/images/1.jpg') }}" alt="...">
-                                                </a>
+                                <div class="panel-body p-1 pt-10">
+                                    <div class="card-block pl-0 pt-0 pb-10">
+                                        <div class="project-controls clearfix" style="border: none">
+                                            <div class="float-left">
+                                                <a href="http://dahan.me/admin/student/create" class="btn btn-outline btn-success btn-sm">添加模拟方案</a>
+                                                <a href="http://dahan.me/admin/student/create" class="btn btn-outline btn-success btn-sm">拟方案对比</a>
+                                                <a href="http://dahan.me/admin/student/create" class="btn btn-outline btn-success btn-sm">山东山东</a>
+                                                <a href="http://dahan.me/admin/student/create" class="btn btn-outline btn-success btn-sm">更换老师</a>
+                                                <a href="http://dahan.me/admin/student/create" class="btn btn-outline btn-danger btn-sm">批量删除</a>
                                             </div>
-                                            <div class="media-body">
-                                                <h5 class="mt-0 mb-5">Ida Fleming
-                                                    <small>posted an new activity comment</small>
-                                                </h5>
-                                                <small>active 14 minutes ago</small>
-                                                <div class="profile-brief">Cras sit amet nibh libero, in gravida nulla. Nulla
-                                                    vel metus.
-                                                </div>
+                                            <div class="float-right">
+                                                <nav>
+
+                                                </nav>
                                             </div>
                                         </div>
-                                    </li>
-                                </ul>
+                                    </div>
+                                    <!-- Example Table Selectable -->
+                                    <form action="">
+                                        <table class="table table-hover table-bordered table-striped">
+                                            <thead>
+                                            <tr align="center">
+                                                <th class="w-50">
+                                <span class="checkbox-custom checkbox-primary">
+                                  <input class="selectable-all" type="checkbox">
+                                  <label></label>
+                                </span>
+                                                </th>
+                                                <th>序号</th>
+                                                <th>姓名</th>
+                                                <th>省份</th>
+                                                <th>联系电话</th>
+                                                <th class="hidden-sm-down">身份证</th>
+                                                <th>规划师</th>
+                                                <th class="hidden-sm-down">创建时间</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr align="center">
+                                                <td>
+                            <span class="checkbox-custom checkbox-primary">
+                              <input class="selectable-item" type="checkbox" id="row-1" value="1">
+                              <label for="row-1"></label>
+                            </span>
+                                                </td>
+                                                <td>1</td>
+                                                <td>张三</td>
+                                                <td>北京市</td>
+                                                <td></td>
+                                                <td class="hidden-sm-down"></td>
+                                                <td>未分配</td>
+                                                <td class="hidden-sm-down">2018-05-07 12:36:47</td>
+                                                <td>
+                                                    <a href="http://dahan.me/admin/student/1" class="btn btn-outline btn-success btn-xs"><i class="icon wb-eye" aria-hidden="true"></i></a>
+                                                    <a href="http://dahan.me/admin/student/1/edit" class="btn btn-outline btn-primary btn-xs"><i class="icon wb-pencil" aria-hidden="true"></i></a>
+                                                    <a href="http://dahan.me/admin/student/1" class="btn btn-outline btn-warning btn-xs"><i class="icon wb-trash" aria-hidden="true"></i></a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </form>
+
+                                    <!-- End Example Table Selectable -->
+                                </div>
                                 <a class="btn btn-block btn-default profile-readMore" href="javascript:void(0)" role="button">Show more</a>
                             </div>
                         </div>
@@ -411,7 +463,7 @@
 @endsection
 @section('js')
     <script>
-        $('body').addClass('page-profile')
+        $('body').addClass('page-profile');
     </script>
 @endsection
 

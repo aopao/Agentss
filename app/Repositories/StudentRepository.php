@@ -37,6 +37,7 @@ class StudentRepository
 		return $this->student->paginate(config('admin.page'));
 	}
 
+
 	public function getAllByQuery($key)
 	{
 		$keyword = '%' . $key . '%';
@@ -49,6 +50,13 @@ class StudentRepository
 	public function getById($id)
 	{
 		return $this->student->with([ 'province' , 'user' ])->find($id);
+	}
+
+	public function isAvailable($student_id)
+	{
+		if (!$this->student->find($student_id)) {
+			abort(404);
+		}
 	}
 
 	public function store(array $array)

@@ -31,34 +31,34 @@
         <div class="panel-body pt-0">
             <form action="">
                 <!-- Example Table Selectable -->
-                <div class="example mt--1">
-                    <table class="table table-hover table-bordered table-striped">
-                        <thead>
-                        <tr align="center">
-                            <th class="w-50">
+                <table class="table table-hover table-bordered table-striped">
+                    <thead>
+                    <tr align="center">
+                        <th class="w-50">
                             <span class="checkbox-custom checkbox-primary">
                               <input class="selectable-all" type="checkbox">
                               <label></label>
                             </span>
-                            </th>
-                            <th>@lang('form.id')</th>
-                            <th>@lang('user.username')</th>
-                            <th>@lang('user.phone')</th>
-                            <th>@lang('user.nickname')</th>
-                            <th>@lang('user.province')</th>
-                            <th class="hidden-sm-down">@lang('form.created_at')</th>
-                            <th class="hidden-sm-down">@lang('form.status')</th>
-                            <th>@lang('form.action')</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                        </th>
+                        <th>@lang('form.id')</th>
+                        <th>@lang('user.username')</th>
+                        <th>@lang('user.phone')</th>
+                        <th>@lang('user.nickname')</th>
+                        <th>@lang('user.province')</th>
+                        <th class="hidden-sm-down">@lang('form.created_at')</th>
+                        <th class="hidden-sm-down">@lang('form.status')</th>
+                        <th>@lang('form.action')</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @if(isset($users))
                         @foreach($users as $user)
                             <tr align="center">
                                 <td>
-                            <span class="checkbox-custom checkbox-primary">
-                              <input class="selectable-item" type="checkbox" id="row-{{ $user['id'] }}" value="{{ $user['id'] }}">
-                              <label for="row-{{ $user['id'] }}"></label>
-                            </span>
+                                        <span class="checkbox-custom checkbox-primary">
+                                          <input class="selectable-item" type="checkbox" id="row-{{ $user['id'] }}" value="{{ $user['id'] }}">
+                                          <label for="row-{{ $user['id'] }}"></label>
+                                        </span>
                                 </td>
                                 <td>{{ $user['id'] }}</td>
                                 <td>{{ $user['username'] }}</td>
@@ -90,9 +90,13 @@
                                 </td>
                             </tr>
                         @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                    @else
+                        <tr align="center">
+                            <td colspan="9">@lang('form.nodata')</td>
+                        </tr>
+                    @endif
+                    </tbody>
+                </table>
                 <div class="card-block p-0">
                     <div class="project-controls clearfix" style="border: none">
                         <div class="float-left">

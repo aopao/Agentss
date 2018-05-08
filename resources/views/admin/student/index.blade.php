@@ -36,8 +36,7 @@
                         <tr align="center">
                             <th class="w-50">
                             <span class="checkbox-custom checkbox-primary">
-                              <input class="selectable-all" type="checkbox">
-                              <label></label>
+                              <input class="selectable-all" type="checkbox"><label></label>
                             </span>
                             </th>
                             <th>@lang('form.id')</th>
@@ -55,8 +54,7 @@
                             <tr align="center">
                                 <td>
                             <span class="checkbox-custom checkbox-primary">
-                              <input class="selectable-item" type="checkbox" id="row-{{ $student['id'] }}" value="{{ $student['id'] }}">
-                              <label for="row-{{ $student['id'] }}"></label>
+                              <input class="selectable-item" type="checkbox" id="row-{{ $student['id'] }}" value="{{ $student['id'] }}"><label for="row-{{ $student['id'] }}"></label>
                             </span>
                                 </td>
                                 <td>{{ $student['id'] }}</td>
@@ -80,7 +78,8 @@
             <div class="card-block p-0">
                 <div class="project-controls clearfix" style="border: none">
                     <div class="float-left">
-                        <a href="{{ route('admin.student.create') }}" class="btn btn-outline btn-info">@lang('student.change_agent')</a>
+                        <a href="{{ route('admin.student.create') }}" class="btn btn-outline btn-success btn-sm">@lang('student.change_agent')</a>
+                        <a href="{{ route('admin.student.create') }}" class="btn btn-outline btn-danger btn-sm">@lang('form.delete')</a>
                     </div>
                     <div class="float-right">
                         <nav>
@@ -96,7 +95,6 @@
             <!-- End Example Table Selectable -->
         </div>
     </div>
-
 @endsection
 @section('js')
     <script>

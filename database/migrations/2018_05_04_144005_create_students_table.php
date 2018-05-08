@@ -20,9 +20,9 @@ class CreateStudentsTable extends Migration
 			$table->string('sex')->default(0)->comment('0:女1:男');
 			$table->string('age')->default(0);
 			$table->string('nation')->default(0)->comment('0:汉族1:其他');
-			$table->string('province');
-			$table->string('city')->nullable();
-			$table->string('area')->nullable();
+			$table->integer('province_id');
+			$table->integer('city_id')->nullable();
+			$table->integer('area_id')->nullable();
 			$table->string('contact')->nullable()->comment('联系人');
 			$table->string('mobile')->nullable();
 			$table->integer('card')->nullable()->comment('身份证');

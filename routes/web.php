@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/' , 'IndexController@index');
 
 #前后端用户判断跳转路径

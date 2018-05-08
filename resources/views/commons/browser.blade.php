@@ -1,3 +1,3 @@
-<!--[if lt IE 8]>
-<p class="browserupgrade">@lang('tips.browser_low')</p>
-<![endif]-->
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">@lang('tips.browser_low')</p>
+    <![endif]-->

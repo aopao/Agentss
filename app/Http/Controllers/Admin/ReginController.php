@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-
 use Illuminate\Http\Request;
 use App\Repositories\AreaRepository;
 use App\Repositories\CityRepository;
@@ -28,9 +27,9 @@ class ReginController extends BaseController
 		$id = $request->id;
 		$html = $request->html;
 		if (isset($id) && is_numeric($id)) {
-			if($html){
+			if ($html) {
 				return $this->city->getCityByIdToHtml($id);
-			}else{
+			} else {
 				return $this->city->getCityById($id);
 			}
 		}
@@ -41,12 +40,17 @@ class ReginController extends BaseController
 		$id = $request->id;
 		$html = $request->html;
 		if (isset($id) && is_numeric($id)) {
-			if($html){
+			if ($html) {
 				return $this->area->getAreaByIdToHtml($id);
-			}else{
+			} else {
 				return $this->area->getAreaById($id);
 			}
 		}
+	}
+
+	public function threeLink()
+	{
+		echo 1;
 	}
 
 }

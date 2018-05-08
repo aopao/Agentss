@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use Illuminate\Http\Request;
+use App\Repositories\TypeRepository;
 use App\Http\Requests\StudentRequest;
 use App\Repositories\ProvinceRepository;
 use App\Repositories\StudentRepository;
@@ -11,11 +12,13 @@ use App\Repositories\StudentRepository;
 class StudentController extends BaseController
 {
 	private $student;
+	private $type;
 
-	public function __construct(StudentRepository $studentRepository)
+	public function __construct(StudentRepository $studentRepository , TypeRepository $typeRepository)
 	{
 		parent::__construct();
 		$this->student = $studentRepository;
+		$this->type = $typeRepository;
 	}
 
 	public function index(Request $request)
@@ -34,7 +37,8 @@ class StudentController extends BaseController
 		$info = $this->student->getById($id);
 		if (!isset($info))
 			abort(404);
-		return view('admin.student.show' , compact('info'));
+		$list = $this->type->getList();
+		return view('admin.student.show' , compact('info' , 'list'));
 	}
 
 	public function create(ProvinceRepository $provinceRepository)
@@ -46,7 +50,9 @@ class StudentController extends BaseController
 
 	public function store(StudentRequest $studentRequest)
 	{
-		$this->student->store($studentRequest->all());
+		if ($this->student->store($studentRequest->all())) {
+			return redirect(route('admin.student.index'));
+		}
 	}
 
 	public function edit()

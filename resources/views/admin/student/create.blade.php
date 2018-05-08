@@ -35,7 +35,10 @@
                                         </div>
                                         <div class="form-group col-md-3 ">
                                             <label class="form-control-label" for="inputAge">@lang('student.age')：</label>
-                                            <input type="text" class="form-control" id="inputAge" name="age" placeholder="@lang('student.age')" autocomplete="off">
+                                            <input type="text" class="form-control {{ $errors->has('age')?'is-invalid':'focus' }}" id="inputAge" name="age" placeholder="@lang('student.age')" autocomplete="off">
+                                            @if ($errors->has('age'))
+                                                <div class="invalid-feedback">{{ $errors->first('age') }}</div>
+                                            @endif
                                         </div>
                                         <div class="form-group col-md-3 ">
                                             <label class="form-control-label" for="inputNation">@lang('student.nation')：</label>
@@ -89,19 +92,19 @@
                                         </div>
                                         <div class="form-group col-md-12 form-inline">
                                             <label class="form-control-label">@lang('student.census')：&nbsp;</label>
-                                            <div class="example">
+                                            <div>
                                                 <select class="form-control" name="province_id" data-plugin="select2" id="province" style="width: 150px">
                                                     @foreach($provinces as $value)
                                                         <option value="{{ $value['id'] }}">{{ $value['name'] }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <div class="example ml-15">
+                                            <div class="ml-15">
                                                 <select class="form-control" name="city_id" data-plugin="select2" id="city" style="width: 150px">
                                                     <option value="0">@lang('student.orselect')</option>
                                                 </select>
                                             </div>
-                                            <div class="example ml-15">
+                                            <div class="ml-15">
                                                 <select class="form-control" name="area_id" data-plugin="select2" id="area" style="width: 150px">
                                                     <option value="0">@lang('student.orselect')</option>
                                                 </select>
@@ -121,69 +124,65 @@
                 <div class="panel-body container-fluid">
                     <div class="row row-lg">
                         <div class="col-md-12">
-                            <div class="example-wrap">
-                                <div class="example">
-                                    <div class="row">
-                                        <div class="form-group col-md-5">
-                                            <label class="form-control-label" for="inputBranchs">@lang('student.branchs')：</label>
-                                            <div class="form-inline">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" id="inputBranchs" name="branchs" placeholder="@lang('student.branchs')" autocomplete="off">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" id="inputBranchs" name="branchs" placeholder="@lang('student.branchs')" autocomplete="off">
-                                                </div>
-                                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-5">
+                                    <label class="form-control-label" for="inputBranchs">@lang('student.branchs')：</label>
+                                    <div class="form-inline">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="inputBranchs" name="branchs" placeholder="@lang('student.branchs')" autocomplete="off">
                                         </div>
-                                        <div class="form-group col-md-5">
-                                            <label class="form-control-label" for="inputSeats">@lang('student.seats')：</label>
-                                            <div class="form-inline">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" id="inputSeats" name="seats" placeholder="@lang('student.seats')" autocomplete="off">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" id="inputSeats" name="seats" placeholder="@lang('student.seats')" autocomplete="off">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-5">
-                                            <label class="form-control-label" for="inputSimulate1">@lang('student.simulate1_score')/@lang('student.simulate1_rank')：</label>
-                                            <div class="form-inline">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" id="inputSimulate1Score" name="simulate1_score" placeholder="@lang('student.simulate1_score')" autocomplete="off">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" id="inputSimulate1Rank" name="simulate1_rank" placeholder="@lang('student.simulate1_rank')" autocomplete="off">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-5">
-                                            <label class="form-control-label" for="inputSimuate2">@lang('student.simulate2_score')/@lang('student.simulate2_rank')：</label>
-                                            <div class="form-inline">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" id="inputSimulate2Score" name="simulate2_score" placeholder="@lang('student.simulate2_score')" autocomplete="off">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" id="inputSimulate2Rank" name="simulate2_rank" placeholder="@lang('student.simulate2_rank')" autocomplete="off">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-5">
-                                            <label class="form-control-label" for="inputSimulate3">@lang('student.simulate3_score')/@lang('student.simulate3_rank')：</label>
-                                            <div class="form-inline">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" id="inputSimulate3Score" name="simulate3_score" placeholder="@lang('student.simulate3_score')" autocomplete="off">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" id="inputSimulate3Rank" name="simulate3_rank" placeholder="@lang('student.simulate3_rank')" autocomplete="off">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label class="form-control-label" for="inputScore">@lang('student.score')：</label>
-                                            <input type="text" class="form-control" id="inputScore" name="score" placeholder="@lang('student.score')" autocomplete="off">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="inputBranchs" name="branchs" placeholder="@lang('student.branchs')" autocomplete="off">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label class="form-control-label" for="inputSeats">@lang('student.seats')：</label>
+                                    <div class="form-inline">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="inputSeats" name="seats" placeholder="@lang('student.seats')" autocomplete="off">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="inputSeats" name="seats" placeholder="@lang('student.seats')" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label class="form-control-label" for="inputSimulate1">@lang('student.simulate1_score')/@lang('student.simulate1_rank')：</label>
+                                    <div class="form-inline">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="inputSimulate1Score" name="simulate1_score" placeholder="@lang('student.simulate1_score')" autocomplete="off">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="inputSimulate1Rank" name="simulate1_rank" placeholder="@lang('student.simulate1_rank')" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label class="form-control-label" for="inputSimuate2">@lang('student.simulate2_score')/@lang('student.simulate2_rank')：</label>
+                                    <div class="form-inline">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="inputSimulate2Score" name="simulate2_score" placeholder="@lang('student.simulate2_score')" autocomplete="off">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="inputSimulate2Rank" name="simulate2_rank" placeholder="@lang('student.simulate2_rank')" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label class="form-control-label" for="inputSimulate3">@lang('student.simulate3_score')/@lang('student.simulate3_rank')：</label>
+                                    <div class="form-inline">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="inputSimulate3Score" name="simulate3_score" placeholder="@lang('student.simulate3_score')" autocomplete="off">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="inputSimulate3Rank" name="simulate3_rank" placeholder="@lang('student.simulate3_rank')" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label class="form-control-label" for="inputScore">@lang('student.score')：</label>
+                                    <input type="text" class="form-control" id="inputScore" name="score" placeholder="@lang('student.score')" autocomplete="off">
                                 </div>
                             </div>
                         </div>
@@ -197,18 +196,14 @@
                 <div class="panel-body container-fluid">
                     <div class="row row-lg">
                         <div class="col-md-12">
-                            <div class="example-wrap">
-                                <div class="example">
-                                    <div class="row">
-                                        <div class="form-group col-md-3 ">
-                                            <label class="form-control-label" for="inputGkscore">@lang('student.gkscore')：</label>
-                                            <input type="text" class="form-control" id="inputGkscore" name="gkscore" placeholder="@lang('student.gkscore')" autocomplete="off">
-                                        </div>
-                                        <div class="form-group col-md-3 ">
-                                            <label class="form-control-label" for="inputRank">@lang('student.rank')：</label>
-                                            <input type="text" class="form-control" id="inputRank" name="rank" placeholder="@lang('student.rank')" autocomplete="off">
-                                        </div>
-                                    </div>
+                            <div class="row">
+                                <div class="form-group col-md-3 ">
+                                    <label class="form-control-label" for="inputGkscore">@lang('student.gkscore')：</label>
+                                    <input type="text" class="form-control" id="inputGkscore" name="gkscore" placeholder="@lang('student.gkscore')" autocomplete="off">
+                                </div>
+                                <div class="form-group col-md-3 ">
+                                    <label class="form-control-label" for="inputRank">@lang('student.rank')：</label>
+                                    <input type="text" class="form-control" id="inputRank" name="rank" placeholder="@lang('student.rank')" autocomplete="off">
                                 </div>
                             </div>
                         </div>

@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    protected $fillable=[
-		'name','sex','province'
+	protected $fillable = [
+		'name' , 'age' , 'sex' , 'province_id' , 'user_id'
 	];
 
 	public function province()
 	{
 		return $this->belongsTo(Province::class);
-    }
+	}
 
 	public function user()
 	{

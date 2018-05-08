@@ -24,7 +24,8 @@ class StudentRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|min:1|max:100'
+            'name'=>'required|min:1|max:100',
+			'age'=>'required|numeric'
         ];
     }
 
@@ -32,7 +33,9 @@ class StudentRequest extends FormRequest
 	{
 		return [
 			'name.required'=>'用户名必须填写',
-			'name.min'=>'用户名最少一个字符'
+			'name.min'=>'用户名最少一个字符',
+			'age.required'=>'年龄必须填写',
+			'age.numeric'=>'年龄必须是整数'
 		];
 	}
 }
