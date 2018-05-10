@@ -5,7 +5,7 @@
 @section('content')
     <body class="animsition page-login-v2 layout-full page-dark" style="background: transparent;">
     @include('commons.browser')
-    <!-- Page -->
+    <!-- Login -->
     <div class="page" data-animsition-in="fade-in" data-animsition-out="fade-out">
         <div class="page-content">
             <div class="page-brand-info">
@@ -15,11 +15,10 @@
                 </div>
                 <p class="font-size-20">{{ $setting['login_message'] }}</p>
             </div>
-
             <div class="page-login-main animation-slide-right animation-duration-1">
                 <div class="brand hidden-md-up">
                     <img class="brand-img" src="{{ asset('v1/images/logo-colored@2x.png') }}" alt="...">
-                    <h3 class="brand-text font-size-40">{{ $setting['web_name'] }}<</h3>
+                    <h3 class="brand-text font-size-40">{{ $setting['web_name'] }}</h3>
                 </div>
                 <h3 class="font-size-24">@lang('agent.login_title')</h3>
 
@@ -37,12 +36,12 @@
                             <input type="checkbox" id="rememberMe" name="rememberMe">
                             <label for="rememberMe">@lang('form.remmber')</label>
                         </div>
-                        <a class="float-right" href="forgot-password.html">@lang('form.forget_password')</a>
+                        <a class="float-right" href="javascript:void(0)">@lang('form.forget_password')</a>
                     </div>
                     {{ csrf_field() }}
                     <button type="submit" class="btn btn-primary btn-block">@lang('form.submit')</button>
                 </form>
-                <p>@lang('form.guest')? <a href="register-v2.html">@lang('form.register_user')</a></p>
+                <p>@lang('form.guest')? <a href="javascript:void(0)">@lang('form.register_user')</a></p>
                 <footer class="page-copyright">
                     <p>{{ $setting['web_name'] }}</p>
                     <p>{{ $setting['copyright'] }}</p>
@@ -50,7 +49,7 @@
             </div>
         </div>
     </div>
-    <!-- End Page -->
+    <!-- End Login -->
 @endsection
 
 

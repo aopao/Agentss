@@ -46,7 +46,7 @@
                                         <input type="text" class="form-control" id="inputBranchs" name="begin_score" required placeholder="@lang('plan.begin_score')" autocomplete="off">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="inputBranchs" name="end_score"  placeholder="@lang('plan.end_score')" autocomplete="off">
+                                        <input type="text" class="form-control" id="inputBranchs" name="end_score" placeholder="@lang('plan.end_score')" autocomplete="off">
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +55,9 @@
                             <div>
                                 {{ csrf_field() }}
                                 <input type="hidden" name="plan_id" value="{{ $plan['id'] }}">
+                                <input type="hidden" name="province" value="{{ $student['province']['name'] }}">
                                 <input type="hidden" name="student_id" value="{{ $student['id'] }}">
+                                <input type="hidden" name="admitted" value="{{ $student['admitted'] }}">
                                 <input type="submit" style="margin: 0px auto;display: table;" class="btn btn-primary" value="@lang('form.search_college')">
                             </div>
                         </div>

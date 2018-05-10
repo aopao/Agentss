@@ -32,6 +32,6 @@ return [
 	'add_school'=>'新增院校',
 	'options'=>'输入方案基本信息',
 	'search_college'=>'符合条件的院校专业列表',
-	'add_plan'=>'加入方案'
+	'add_plan'=>'加入方案',
 ];
 

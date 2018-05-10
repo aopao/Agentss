@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use DB;
 use Auth;
 use Illuminate\Http\Request;
 use App\Repositories\PlanRepository;
@@ -94,7 +95,37 @@ class PlanDetailController extends BaseController
 
 	public function search(Request $request)
 	{
-		$students = $this->student->getAll();
-		return view('admin.student.list' , compact('students'));
+		$mongo_client = DB::connection('mongodb')->collection('list');
+
+		$admitted = $request->admitted == 1 ? '理科' : '文科';
+
+		$province = $request->province;
+
+		$mongo = $mongo_client->where('subject' , '=' , '' . $admitted . '');
+
+		$mongo = $mongo_client->where('provinces' , '=' , '' . $province . '');
+
+		if (isset($request->school_name)) {
+			$mongo = $mongo_client->where('school' , 'like' , '%' . $request->school_name . '%');
+		}
+		if (isset($request->major_remark)) {
+			$mongo = $mongo_client->where('major' , 'like' , '%' . $request->major_remark . '%');
+		}
+
+		if (isset($request->province_name)) {
+			$mongo = $mongo_client->where('provinces' , 'like' , '%' . $request->province_name . '%');
+		}
+
+		if (isset($request->begin_score)) {
+			$mongo = $mongo_client->where('lowest' , '>' , '' . $request->begin_score . '');
+		}
+
+		if (isset($request->end_score)) {
+			$mongo = $mongo_client->where('lowest' , '<' , $request->end_score);
+		}
+
+//		$lists = $mongo->orderBy('year' , 'desc')->take(10)->get()->Toarray();
+		$lists = $mongo->orderBy('year' , 'desc')->get()->Toarray();
+		return view('admin.student.list' , compact('lists'));
 	}
 }

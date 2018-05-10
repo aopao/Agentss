@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-
 use Illuminate\Http\Request;
 use App\Repositories\TypeRepository;
 use App\Http\Requests\StudentRequest;
@@ -13,6 +12,7 @@ class StudentController extends BaseController
 {
 	private $student;
 	private $type;
+
 
 	public function __construct(StudentRepository $studentRepository , TypeRepository $typeRepository)
 	{

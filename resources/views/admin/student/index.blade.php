@@ -95,6 +95,7 @@
             <!-- End Example Table Selectable -->
         </div>
     </div>
+
 @endsection
 @section('js')
     <script>
@@ -105,6 +106,7 @@
                 $('.selectable-item').attr("checked", false);
             }
         });
+
     </script>
 @endsection
 
